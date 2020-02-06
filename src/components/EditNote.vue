@@ -93,7 +93,11 @@
 				this.editted_note = null;
 			},
 			getReadyBack(){
-				eventEmitter.$emit('getReadyBack');
+				if (this.isNoteChanged) {
+					eventEmitter.$emit('getReadyBack');
+				} else {
+					this.goHome();
+				}
 			},
 			getOriginals(){
 				this.editted_note = JSON.parse(JSON.stringify(this.note));
